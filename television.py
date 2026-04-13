@@ -6,70 +6,77 @@ class Television:
 
     def __init__(self) -> None:
         self.__status = False
-        self.__mute = False
+        self.__muted = False
         self.__volume = Television.MIN_VOLUME
         self.__channel = Television.MIN_CHANNEL
 
 
-    def power(self):
-        self.__status = not self.__status
+    def power(self)-> None:
     """
     Method to turn TV on and off
     """
+        self.__status = not self.__status
+   
 
-    def mute(self) -> None:
-        if self.__status:
-            self.__mute = not self.__mute
+    def muted(self) -> None:
     """
     Method to mute and unmute TV
     """
+        if self.__status:
+            self.__muted = not self.__mute
+    
 
-    def channel_up(self):
+    def channel_up(self)-> None:
+     """
+    Method to go up a channel
+    """
         if self.__status:
             if self.__channel < Television.MAX_CHANNEL:
                 self.__channel += 1
             else:
                 self.__channel = Television.MIN_CHANNEL
-    """
-    Method to go up a channel
-    """
+   
 
-    def channel_down(self):
+    def channel_down(self)-> None:
+      """
+    Method to go down a channel
+    """
         if self.__status:
             if self.__channel > Television.MIN_CHANNEL:
                 self.__channel -= 1
             else:
                 self.__channel = Television.MAX_CHANNEL
-    """
-    Method to go down a channel
-    """
 
-    def volume_up(self):
+
+    def volume_up(self)-> None:
+    """
+    Method to turn volume up
+    """
         if self.__status:
             if self.__status:
-                self.__mute = False
+                self.__muted = False
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
             else:
                 self.__volume = Television.MAX_VOLUME
-    """
-    Method to turn volume up
-    """
+    
 
-    def volume_down(self):
+    def volume_down(self)-> None:
+      """
+    Method to turn volume down 
+    """
         if self.__status:
             if self.__status:
-                self.__mute = False
+                self.__muted = False
             if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
             else:
                 self.__volume = Television.MIN_VOLUME
-    """
-    Method to turn volume down 
-    """
+  
 
-    def __str__(self):
-        if self.__muted:
-            return f'Volume = {Television.MIN_VOLUME}
+    def __str__(self)-> str:
+    """
+    Returns status, channel number, and volume of TV
+    """
         return f"Power = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}"
      
